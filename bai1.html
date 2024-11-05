@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bac2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #pt,
+        #kq {
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #555;
+        }
+
+        .nut {
+            margin-top: 20px;
+        }
+
+        .nut button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .nut button:hover {
+            background-color: #0056b3;
+        }
+
+        .nut button:active {
+            background-color: #004085;
+        }
+    </style>
+    <script>
+        // 1. Tao 1 doi tuong PTB2
+        var ptb2 = new Object();
+        // 2. Khai bao thuoc tinh
+        ptb2.a = null;
+        ptb2.b = null;
+        ptb2.c = null;
+
+        // 3. Khai bao hanh dong
+        ptb2.nhap = function () {
+            // Nhap cho a , b, c
+            this.a = window.prompt("Nhap a =: ");
+            this.b = window.prompt("Nhap b =: ");
+            this.c = window.prompt("Nhap c =: ");
+            // xuat ra
+            document.getElementById("pt").innerHTML = this.a + "x<sup>2</sup> + "
+                + this.b + "x + " + this.c + " = 0";
+
+        }
+        ptb2.giai = function () {
+            // 4/ khai bao bien kq;
+            var kq = "";
+            // 5. tinh delta
+            var delta = this.b * this.b - 4 * this.a * this.c;
+            if (delta < 0) {
+                kq = "Vo nghiem";
+            }
+            else if (delta == 0) {
+                kq = "nghiem kep x1 = x2 =" + (-this.b / (2 * this.a));
+            }
+            else {
+                var x1 = (-this.b + Math.sqrt(delta)) / (2 * this.a);
+                var x2 = (-this.b - Math.sqrt(delta)) / (2 * this.a);
+                kq = "x1 = " + x1 + ",x2 = " + x2;
+            }
+            document.getElementById("kq").innerHTML = kq;
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>GIAI PHUONG TRINH BAC 2</h2>
+        <div id="pt">Phuong trinh</div>
+        <div id="kq">Ket qua</div>
+        <div class="nut">
+            <button onclick="ptb2.nhap()">Nhap A B C</button>
+            <button onclick="ptb2.giai()">Giai PT</button>
+        </div>
+    </div>
+</body>
+
+</html>
